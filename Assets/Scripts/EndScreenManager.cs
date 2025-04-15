@@ -23,21 +23,21 @@ namespace Assets.Scripts
             GameEvents.OnPlayerDeath -= ShowLose;
             GameEvents.OnPlayerWin -= ShowWin;
         }
-        
-        private void ShowLose()
+        private void ShowResult(GameObject panelToShow)
         {
             ResultPanel.SetActive(true);
             Time.timeScale = 0f;
-            losePanel.SetActive(true);
+            panelToShow.SetActive(true);
             UpdateTime();
         }
+        private void ShowLose()
+        {
+            ShowResult(losePanel);
+        }
+
         private void ShowWin()
         {
-            ResultPanel.SetActive(true);
-
-            Time.timeScale = 0f;
-            winPanel.SetActive(true);
-            UpdateTime();
+            ShowResult(winPanel);
         }
 
         private void UpdateTime()
