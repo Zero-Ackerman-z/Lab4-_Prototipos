@@ -13,22 +13,22 @@ namespace Assets.Scripts
         private void Start()
         {
             currentHealth = maxHealth;
-            GameEvents.OnMaxHealthSet?.Invoke(maxHealth);
-            GameEvents.OnHealthChanged?.Invoke(currentHealth);
-            GameEvents.OnScoreChanged?.Invoke(score);
+            GameEvents.RaiseMaxHealthSet(maxHealth);
+            GameEvents.RaiseHealthChanged(currentHealth);
+            GameEvents.RaiseScoreChanged(score);
         }
 
         public void ModifyHealth(int amount)
         {
             currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
-            GameEvents.OnHealthChanged?.Invoke(currentHealth);
-            if (currentHealth <= 0) GameEvents.OnPlayerDeath?.Invoke();
+            GameEvents.RaiseHealthChanged(currentHealth);
+            if (currentHealth <= 0) GameEvents.RaisePlayerDeath();
         }
 
         public void AddScore(int amount)
         {
             score += amount;
-            GameEvents.OnScoreChanged?.Invoke(score);
+            GameEvents.RaiseScoreChanged(score);
         }
     }
 }

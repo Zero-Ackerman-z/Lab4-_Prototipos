@@ -19,7 +19,7 @@ namespace Assets.Scripts
             collectedCoins++;
             if (collectedCoins >= totalCoins)
             {
-                GameEvents.OnPlayerWin?.Invoke();
+                GameEvents.RaisePlayerWin();
             }
         }
         public void TogglePause()
