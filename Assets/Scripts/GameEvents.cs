@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Assets.Scripts
 {
-    public static class GameEvents
+    public static class GameEvents1
     {
         public delegate void IntEvent(int value);
         public delegate void SimpleEvent();
@@ -18,5 +18,6 @@ namespace Assets.Scripts
         public static void RaiseScoreChanged(int value) => OnScoreChanged?.Invoke(value);
         public static void RaisePlayerDeath() => OnPlayerDeath?.Invoke();
         public static void RaisePlayerWin() => OnPlayerWin?.Invoke();
+
     }
 }
